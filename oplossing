@@ -1,0 +1,55 @@
+
+Here's the solution for the "hey kiddo" exercise.
+
+const isAdult = function(age) {
+    if (age >= 18) {
+        return true;
+    } else {
+        return false;
+    }
+};
+
+const greet = function(age) {
+    if (isAdult(age)) {
+        return "Hello there";
+    } else {
+        return "Hey kiddo";
+    }
+};
+
+console.log(greet(65)); // "Hello there"
+console.log(greet(10)); // "Hey kiddo"
+
+// We can make this a lot shorter by using arrow functions, the ternary if
+// statement and returning booleans immediately. You don't need to write it
+// this short, but it's good to see that it's possible.
+
+const isAdultShort = age => age >= 18;
+
+const greetShort = age => (isAdult(age) ? "Hello there" : "Hey kiddo");
+
+console.log(greetShort(65)); // "Hello there"
+console.log(greetShort(10)); // "Hey kiddo"
+
+Here's the solution for the second VAT exercise.
+
+const calculateBasePrice = function(priceIncludingVAT, VATPercentage) {
+    const basePrice = priceIncludingVAT / ((100 + VATPercentage) / 100);
+    return basePrice;
+};
+
+const calculateBasePriceAndVAT = function(priceIncludingVAT, VATPercentage) {
+    const basePrice = calculateBasePrice(priceIncludingVAT, VATPercentage);
+    const VAT = priceIncludingVAT - basePrice;
+    return [basePrice, VAT];
+};
+
+console.log(calculateBasePriceAndVAT(1210, 21)); // [1000, 210]
+console.log(calculateBasePriceAndVAT(2.18, 9)); // [2, 0.18]
+
+You'll probably get a VAT amount that's kind of weird.
+ This is not a mathematical error.
+  Computers sometimes have a hard time with doing
+   so-called "floating point" arithmetic.
+   For more information see https://floating-point-gui.de/ You can
+    ignore this weirdness for now.
